@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, Trophy, Users, Star, TrendingUp, Search, Filter, Plus, Minus, Zap, Award, User, CreditCard, Gamepad2, RefreshCw, ChevronDown, Home, Sports, History, Settings, LogOut, Eye, EyeOff } from 'lucide-react';
+import { Calendar, Clock, Trophy, Users, Star, TrendingUp, Search, Filter, Plus, Minus, Zap, Award, User, CreditCard, Gamepad2, RefreshCw, ChevronDown, Home, LogOut, Eye, EyeOff, History, Settings, Play, Pause, Volume2, VolumeX, Heart, Share2, Bookmark, Bell, Menu, X, Football, Basketball, Tennis, Volleyball } from 'lucide-react';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('home');
@@ -23,12 +23,12 @@ const App = () => {
 
   // بيانات الرياضات والمباريات الحقيقية
   const sportsData = [
-    { id: 'football', name: 'كرة القدم', icon: '⚽', color: 'bg-blue-500' },
-    { id: 'basketball', name: 'كرة السلة', icon: '🏀', color: 'bg-orange-500' },
-    { id: 'tennis', name: 'التنس', icon: '🎾', color: 'bg-green-500' },
-    { id: 'volleyball', name: 'ال.volleyball', icon: '🏐', color: 'bg-purple-500' },
-    { id: 'handball', name: 'كرة اليد', icon: '🤾', color: 'bg-red-500' },
-    { id: 'esports', name: 'الألعاب الإلكترونية', icon: '🎮', color: 'bg-pink-500' }
+    { id: 'football', name: 'كرة القدم', icon: '⚽', color: 'bg-blue-500', lucideIcon: Football },
+    { id: 'basketball', name: 'كرة السلة', icon: '🏀', color: 'bg-orange-500', lucideIcon: Basketball },
+    { id: 'tennis', name: 'التنس', icon: '🎾', color: 'bg-green-500', lucideIcon: Tennis },
+    { id: 'volleyball', name: 'ال.volleyball', icon: '🏐', color: 'bg-purple-500', lucideIcon: Volleyball },
+    { id: 'handball', name: 'كرة اليد', icon: '🤾', color: 'bg-red-500', lucideIcon: Play },
+    { id: 'esports', name: 'الألعاب الإلكترونية', icon: '🎮', color: 'bg-pink-500', lucideIcon: Gamepad2 }
   ];
 
   // مباريات حقيقية محدثة
@@ -662,9 +662,7 @@ const App = () => {
                 onClick={() => setSidebarOpen(!sidebarOpen)}
                 className="md:hidden p-2 rounded-lg hover:bg-gray-100"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+                <Menu className="w-6 h-6" />
               </button>
               <div className="flex items-center space-x-2">
                 <Trophy className="w-8 h-8 text-yellow-500" />
@@ -735,7 +733,7 @@ const App = () => {
             <div className="bg-white w-64 h-full p-4" onClick={e => e.stopPropagation()}>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-gray-800">القائمة</h2>
-                <button onClick={() => setSidebarOpen(false)}>✕</button>
+                <button onClick={() => setSidebarOpen(false)}><X className="w-6 h-6" /></button>
               </div>
               <nav className="space-y-2">
                 <button
@@ -753,7 +751,7 @@ const App = () => {
                     activeTab === 'sports' ? 'bg-blue-100 text-blue-600' : 'text-gray-700 hover:bg-gray-100'
                   }`}
                 >
-                  <Sports className="w-5 h-5" />
+                  <Trophy className="w-5 h-5" />
                   <span>الرياضات</span>
                 </button>
                 <button
@@ -800,7 +798,7 @@ const App = () => {
                   activeTab === 'sports' ? 'bg-blue-100 text-blue-600' : 'text-gray-700 hover:bg-gray-100'
                 }`}
               >
-                <Sports className="w-5 h-5" />
+                <Trophy className="w-5 h-5" />
                 <span>الرياضات</span>
               </button>
               <button
@@ -833,18 +831,21 @@ const App = () => {
             <div className="mt-8">
               <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-3">الرياضات</h3>
               <div className="space-y-1">
-                {sportsData.map((sport) => (
-                  <button
-                    key={sport.id}
-                    onClick={() => { setActiveSport(sport.id); setActiveTab('sports'); }}
-                    className={`w-full flex items-center space-x-3 p-2 rounded-lg transition-colors ${
-                      activeSport === sport.id ? 'bg-gray-100 text-gray-800' : 'text-gray-600 hover:bg-gray-50'
-                    }`}
-                  >
-                    <span className={`w-3 h-3 rounded-full ${sport.color}`}></span>
-                    <span className="text-sm">{sport.name}</span>
-                  </button>
-                ))}
+                {sportsData.map((sport) => {
+                  const IconComponent = sport.lucideIcon;
+                  return (
+                    <button
+                      key={sport.id}
+                      onClick={() => { setActiveSport(sport.id); setActiveTab('sports'); }}
+                      className={`w-full flex items-center space-x-3 p-2 rounded-lg transition-colors ${
+                        activeSport === sport.id ? 'bg-gray-100 text-gray-800' : 'text-gray-600 hover:bg-gray-50'
+                      }`}
+                    >
+                      <IconComponent className={`w-4 h-4 ${sport.color.replace('bg-', 'text-')}`} />
+                      <span className="text-sm">{sport.name}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
