@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, Trophy, Users, Star, TrendingUp, Search, Filter, Plus, Minus, Zap, Award, User, CreditCard, Gamepad2, RefreshCw, ChevronDown, Home, LogOut, Eye, EyeOff, History, Settings, Play, Pause, Volume2, VolumeX, Heart, Share2, Bookmark, Bell, Menu, X, Football, Basketball, Tennis, Volleyball } from 'lucide-react';
+import { Calendar, Clock, Trophy, Users, Star, TrendingUp, Search, Filter, Plus, Minus, Zap, Award, User, CreditCard, Gamepad2, RefreshCw, Home, LogOut, Eye, EyeOff, History, Play, Menu, X, Activity, Target, Medal, Crown, Flag, MapPin, Phone, Mail, Lock, Unlock, Heart, Share2, Bookmark, Bell, Volume2, VolumeX } from 'lucide-react';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('home');
@@ -23,11 +23,11 @@ const App = () => {
 
   // بيانات الرياضات والمباريات الحقيقية
   const sportsData = [
-    { id: 'football', name: 'كرة القدم', icon: '⚽', color: 'bg-blue-500', lucideIcon: Football },
-    { id: 'basketball', name: 'كرة السلة', icon: '🏀', color: 'bg-orange-500', lucideIcon: Basketball },
-    { id: 'tennis', name: 'التنس', icon: '🎾', color: 'bg-green-500', lucideIcon: Tennis },
-    { id: 'volleyball', name: 'ال.volleyball', icon: '🏐', color: 'bg-purple-500', lucideIcon: Volleyball },
-    { id: 'handball', name: 'كرة اليد', icon: '🤾', color: 'bg-red-500', lucideIcon: Play },
+    { id: 'football', name: 'كرة القدم', icon: '⚽', color: 'bg-blue-500', lucideIcon: Trophy },
+    { id: 'basketball', name: 'كرة السلة', icon: '🏀', color: 'bg-orange-500', lucideIcon: Target },
+    { id: 'tennis', name: 'التنس', icon: '🎾', color: 'bg-green-500', lucideIcon: Award },
+    { id: 'volleyball', name: 'ال.volleyball', icon: '🏐', color: 'bg-purple-500', lucideIcon: Medal },
+    { id: 'handball', name: 'كرة اليد', icon: '🤾', color: 'bg-red-500', lucideIcon: Crown },
     { id: 'esports', name: 'الألعاب الإلكترونية', icon: '🎮', color: 'bg-pink-500', lucideIcon: Gamepad2 }
   ];
 
