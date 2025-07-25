@@ -278,8 +278,7 @@ const App = () => {
       </div>
     </div>
   );
-
-  return (
+    return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900" dir="rtl">
       {/* Header */}
       <header className="bg-black/20 backdrop-blur-lg border-b border-white/10">
@@ -431,8 +430,7 @@ const App = () => {
               </div>
             </div>
           </div>
-
-          {/* Bet Slip */}
+                    {/* Bet Slip */}
           <div className={`lg:col-span-1 transition-all duration-300 ${betSlipOpen ? 'block' : 'hidden lg:block'}`}>
             <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 sticky top-8">
               <div className="flex items-center justify-between mb-6">
@@ -480,8 +478,34 @@ const App = () => {
                         >
                           ✕
                         </button>
-                      <
-                                        <div className="border-t border-white/20 pt-4 space-y-2">
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-yellow-400 font-bold">{bet.odds}</span>
+                        <div className="flex items-center space-x-2">
+                          <button
+                            onClick={() => updateStake(index, bet.stake - 5)}
+                            className="bg-white/10 rounded p-1 hover:bg-white/20"
+                          >
+                            <Minus className="w-3 h-3" />
+                          </button>
+                          <input
+                            type="number"
+                            value={bet.stake}
+                            onChange={(e) => updateStake(index, parseFloat(e.target.value) || 0)}
+                            className="bg-white/10 border border-white/20 rounded px-2 py-1 w-16 text-center text-white text-sm"
+                          />
+                          <button
+                            onClick={() => updateStake(index, bet.stake + 5)}
+                            className="bg-white/10 rounded p-1 hover:bg-white/20"
+                          >
+                            <Plus className="w-3 h-3" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                  <div className="border-t border-white/20 pt-4 space-y-2">
                     <div className="flex justify-between text-sm">
                       <span className="text-gray-300">إجمالي الفرص:</span>
                       <span className="text-white font-bold">{totalOdds.toFixed(2)}</span>
@@ -549,7 +573,7 @@ const App = () => {
               </div>
             </div>
           </div>
-          <div className="border-t border-white/10 mt-8 pt-8 text-center">
+                    <div className="border-t border-white/10 mt-8 pt-8 text-center">
             <p className="text-gray-400 text-sm">
               © 2024 ZTN-BET X BZEZEL. جميع الحقوق محفوظة. | هذا الموقع مخصص للبالغين فقط
             </p>
@@ -559,5 +583,4 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
